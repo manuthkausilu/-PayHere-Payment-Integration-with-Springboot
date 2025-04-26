@@ -69,20 +69,31 @@ logging.level.com.example=DEBUG
 
 Follow these steps to get the project running:
 
+
 1. Backend (Spring Boot)
 
 Open your terminal and execute the following commands:
 
 git clone [https://github.com/YOUR_USERNAME/payhere-test.git](https://github.com/YOUR_USERNAME/payhere-test.git)
+
 cd payhere-test
+
 ./mvnw spring-boot:run
+
 The Spring Boot backend will start and will be accessible at http://localhost:8080.
 
-2. Frontend (Payment Form)
-Simply open the index.html file located in the src/main/resources/static/ directory in your web browser. This file contains the HTML form that submits payment data to PayHere and uses AJAX to request the secure hash from your backend.
 
-🌐 Exposing notify_url with Ngrok
-PayHere requires a publicly accessible notify_url to send server-side payment confirmations. Since your local backend is not directly accessible from the internet, you can use Ngrok to create a secure tunnel.
+2. Frontend (Payment Form)
+ 
+Simply open the index.html file located in the src/main/resources/static/ directory in your web browser.
+
+ This file contains the HTML form that submits payment data to PayHere and uses AJAX to request the secure hash from your backend.
+
+## 🌐 Exposing notify_url with Ngrok
+
+PayHere requires a publicly accessible notify_url to send server-side payment confirmations. 
+
+Since your local backend is not directly accessible from the internet, you can use Ngrok to create a secure tunnel.
 
 Steps:
 
@@ -93,13 +104,22 @@ Run Ngrok: Open a new terminal window and execute the following command:
 ngrok http 8080
 
 Get Public URL: Ngrok will provide you with a temporary public HTTPS URL. For example:
-Forwarding   [https://b675-175-157-41-80.ngrok-free.app](https://b675-175-157-41-80.ngrok-free.app) -> http://localhost:8080
 
-Update notify_url in HTML: Open the src/main/resources/static/index.html file and update the value of the notify_url hidden input field with the HTTPS URL provided by Ngrok, ensuring you append the correct backend endpoint for the notify handler (likely /api/payment/notify):
+Forwarding                [https://b675-175-157-41-80.ngrok-free.app](https://b675-175-157-41-80.ngrok-free.app) -> http://localhost:8080
+
+Update notify_url in HTML:
+
+Open the src/main/resources/static/index.html file and update the value of the notify_url hidden input field with the HTTPS URL provided by Ngrok, 
+
+ensuring you append the correct backend endpoint for the notify handler (likely /api/payment/notify):
+```
 <input type="hidden" name="notify_url" value="[https://b675-175-157-41-80.ngrok-free.app/api/payment/notify](https://b675-175-157-41-80.ngrok-free.app/api/payment/notify)">
-⚠️ Important: This Ngrok URL changes every time you restart Ngrok. You will need to update the notify_url in your index.html accordingly for each testing session.
+```
+⚠️ Important: This Ngrok URL changes every time you restart Ngrok.
 
-🔄 Payment Flow
+You will need to update the notify_url in your index.html accordingly for each testing session.
+
+## 🔄 Payment Flow
 
 Click Pay Now button.
 
@@ -117,19 +137,35 @@ cancel_url (if cancelled)
 
 notify_url (server-side confirmation)
 
-✅ Result Pages
+## ✅ Result Pages
+
 payment-success.html – This page is displayed to the user after a successful payment.
+
 payment-cancelled.html – This page is displayed if the user cancels the payment process.
 
-📒 Notes
+## 📒 Notes
+
 Ensure that the payhere.app.mode property in your application.properties is set to sandbox for testing.
+
 You can find test credit card information and other testing details in the PayHere Developer Documentation.
 
-📜 License
-This project is open-source and provided for learning and integration testing purposes. Feel free to use and modify it according to your needs.
+## 📜 License
 
-🙌 Acknowledgements
+This project is open-source and provided for learning and integration testing purposes.
+
+Feel free to use and modify it according to your needs.
+
+## 🙌 Acknowledgements
+
 The excellent documentation and resources provided by PayHere.
+
 The invaluable service provided by Ngrok for local development and testing of webhooks.
 
-End of README.md
+## 📞Contact
+
+[Manuth Kausilu] - [manuthkausilu20031018@gmail.com] - [https://www.linkedin.com/in/manuth-kausilu-732535316/]
+
+---
+
+**Thank you for exploring the E-Learning Management System!**
+
