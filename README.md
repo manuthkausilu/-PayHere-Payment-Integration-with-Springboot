@@ -64,7 +64,8 @@ payhere.app.mode=sandbox
 logging.level.org.springframework=INFO
 logging.level.com.example=DEBUG
 
-🚀 How to Run
+```
+## 🚀 How to Run
 
 Follow these steps to get the project running:
 
