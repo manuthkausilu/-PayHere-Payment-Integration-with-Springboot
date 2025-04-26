@@ -75,7 +75,7 @@ Follow these steps to get the project running:
 Open your terminal and execute the following commands :
 
  ```
-git clone [https://github.com/YOUR_USERNAME/payhere-test.git](https://github.com/YOUR_USERNAME/payhere-test.git)
+git clone [https://github.com/manuthkausilu/-PayHere-Payment-Integration-with-Springboot.git]
 ```
 
 cd payhere-test
