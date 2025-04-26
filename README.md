@@ -72,9 +72,11 @@ Follow these steps to get the project running:
 
 1. Backend (Spring Boot)
 
-Open your terminal and execute the following commands:
+Open your terminal and execute the following commands :
 
+ ```
 git clone [https://github.com/YOUR_USERNAME/payhere-test.git](https://github.com/YOUR_USERNAME/payhere-test.git)
+```
 
 cd payhere-test
 
@@ -95,27 +97,35 @@ PayHere requires a publicly accessible notify_url to send server-side payment co
 
 Since your local backend is not directly accessible from the internet, you can use Ngrok to create a secure tunnel.
 
-Steps:
+### Steps :
 
 Download and Install Ngrok: Follow the instructions on the Ngrok website to download and install it on your system.
 
-Run Ngrok: Open a new terminal window and execute the following command:
+Run Ngrok :
 
+Open a new terminal window and execute the following command,
+
+```
 ngrok http 8080
+```
 
-Get Public URL: Ngrok will provide you with a temporary public HTTPS URL. For example:
+Get Public URL : 
 
+Ngrok will provide you with a temporary public HTTPS URL. For example,
+
+```
 Forwarding                [https://b675-175-157-41-80.ngrok-free.app](https://b675-175-157-41-80.ngrok-free.app) -> http://localhost:8080
+```
 
-Update notify_url in HTML:
+Update notify_url in HTML :
 
 Open the src/main/resources/static/index.html file and update the value of the notify_url hidden input field with the HTTPS URL provided by Ngrok, 
 
-ensuring you append the correct backend endpoint for the notify handler (likely /api/payment/notify):
+ensuring you append the correct backend endpoint for the notify handler (likely /api/payment/notify) :
 ```
-<input type="hidden" name="notify_url" value="[https://b675-175-157-41-80.ngrok-free.app/api/payment/notify](https://b675-175-157-41-80.ngrok-free.app/api/payment/notify)">
+<input type="hidden" name="notify_url" value="https://b675-175-157-41-80.ngrok-free.app/api/payment/notify">
 ```
-⚠️ Important: This Ngrok URL changes every time you restart Ngrok.
+### ⚠️ Important: This Ngrok URL changes every time you restart Ngrok.
 
 You will need to update the notify_url in your index.html accordingly for each testing session.
 
@@ -167,5 +177,5 @@ The invaluable service provided by Ngrok for local development and testing of we
 
 ---
 
-**Thank you for exploring the E-Learning Management System!**
+**Thank you for exploring the PayHere Payment Integration Test Project!**
 
