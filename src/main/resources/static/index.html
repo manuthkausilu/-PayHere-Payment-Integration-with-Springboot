@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PayHere Test</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://www.payhere.lk/lib/payhere.js"></script>
+</head>
+<body>
+
+<!-- Payment Form -->
+<form id="payhere-form" method="post" action="https://sandbox.payhere.lk/pay/checkout">
+  <input type="hidden" name="merchant_id" value="">
+  <input type="hidden" name="return_url" value="http://localhost:8080/api/payment/return">
+  <input type="hidden" name="cancel_url" value="http://localhost:8080/api/payment/cancel">
+  <input type="hidden" name="notify_url" value="https://b675-175-157-41-80.ngrok-free.app/api/payment/notify">
+
+  <!-- Customer and item details -->
+  <input type="hidden" name="order_id" value="1">
+  <input type="hidden" name="items" value="Java">
+  <input type="hidden" name="currency" value="LKR">
+  <input type="hidden" name="amount" value="1000.00">
+  <input type="hidden" name="first_name" value="Manuth">
+  <input type="hidden" name="last_name" value="Kausilu">
+  <input type="hidden" name="email" value="manuth@example.com">
+  <input type="hidden" name="phone" value="0712345678">
+  <input type="hidden" name="address" value="123, Main Street">
+  <input type="hidden" name="city" value="Colombo">
+  <input type="hidden" name="country" value="Sri Lanka">
+  <input type="hidden" name="hash" value="">
+</form>
+
+<!-- Pay Now Button -->
+<button id="pay-button">Pay Now</button>
+
+<script>
+  $('#pay-button').on('click', function (e) {
+    e.preventDefault();
+
+    $.ajax({
+      url: "http://localhost:8080/api/payment/hash",
+      type: "POST",
+      contentType: "application/json",  // This tells the server that we're sending JSON data
+      data: JSON.stringify({
+        order_id: "1",
+        amount: "1000.00",
+        currency: "LKR"
+      }),
+      success: function(response) {
+        $('input[name=merchant_id]').val(response.merchant_id);
+        $('input[name=hash]').val(response.hash);
+        $('form').submit(); // auto-submit the form
+      },
+      error: function(xhr, status, error) {
+        console.error("Error:", error);
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
